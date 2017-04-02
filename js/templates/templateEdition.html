@@ -1,0 +1,151 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <ma-view-actions entry="entry" entity="::formController.entity">
+                <ma-list-button entity="::entity"></ma-list-button>
+                <ma-delete-button entry="entry" entity="::entity"></ma-delete-button>
+            </ma-view-actions>
+            <h1>Edit {{entry.values.name}}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row ng-admin-entity-templates" id="edit-view" ng-controller="customformController">
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Fields">
+            <form class="col-lg-12 form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength"
+                  name="form"
+                  ng-submit="submitEdition($event)">
+                <div class="row">
+                    <div ng-init="field=formController.fields[0]" id="row-name" class="form-group has-feedback">
+                        <label for="name" class="col-sm-2 control-label">Name&nbsp;*&nbsp;</label>
+                        <div class="col-sm-10 ng-admin-type-string col-sm-10 col-md-8 col-lg-7">
+                            <ma-input-field field="::field" value="entry.values.name"></ma-input-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[13]" id="row-slug" class="form-group has-feedback">
+                        <label for="slug" class="col-sm-2 control-label">Slug&nbsp;&nbsp;</label>
+                        <div class="col-sm-10 col-sm-10 col-md-8 col-lg-7">
+                            {{ entry.values.slug }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[1]" id="row-description" class="form-group has-feedback">
+                        <label for="description" class="col-sm-2 control-label">Description&nbsp;*&nbsp;</label>
+                        <div class="col-sm-10 ng-admin-type-string col-sm-10 col-md-8 col-lg-7">
+                            <ma-text-field field="::field" value="entry.values.description"></ma-text-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[2]" id="row-owner" class="form-group has-feedback">
+                        <label for="owner" class="col-sm-2 control-label">Owner&nbsp;*&nbsp;</label>
+                        <div class="ng-admin-field-owner ng-admin-type-reference col-sm-10 col-sm-10 col-md-8 col-lg-7">
+                            <ma-reference-field field="::field" value="entry.values.owner"
+                                                datastore="::formController.dataStore"></ma-reference-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[3]" id="row-tags" class="form-group has-feedback">
+                        <label for="tags" class="col-sm-2 control-label">Tags&nbsp;*&nbsp;</label>
+                        <div class="ng-admin-field-tags ng-admin-type-reference col-sm-10 col-sm-10 col-md-8 col-lg-7">
+                            <ma-ref-many-field-tags field="::field" value="entry.values.tags"
+                                                     datastore="::formController.dataStore"></ma-ref-many-field-tags>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[4]" id="row-price" class="form-group has-feedback">
+                        <label for="price" class="col-sm-2 control-label">Price&nbsp;*&nbsp;</label>
+                        <div class="col-sm-10 ng-admin-type-float col-sm-10 col-md-8 col-lg-7">
+                            <ma-input-field field="::field" type="number" step="any"  value="entry.values.price"></ma-input-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[5]" id="row-pg" class="form-group has-feedback">
+                        <label for="pg" class="col-sm-2 control-label">PG&nbsp;*&nbsp;</label>
+                        <div class="col-sm-10 ng-admin-type-string col-sm-10 col-md-8 col-lg-7">
+                            <ma-input-field field="::field" type="number" step="1" value="entry.values.pg"></ma-input-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[6]" id="row-main_image" class="form-group has-feedback">
+                        <label for="main_image" class="col-sm-2 control-label">Main Image&nbsp;*&nbsp;</label>
+                        <div class="col-md-0 ">
+                            <div class="col-md-6">
+                                <file-field field="main_image" thumbnail="{{ entry.values.main_image }}"
+                                            multiple="false" type="image"></file-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[8]" id="row-banner" class="form-group has-feedback">
+                        <label for="banner" class="col-sm-2 control-label">Banner&nbsp;*&nbsp;</label>
+                        <div class="col-md-0 ">
+                            <div class="col-md-6">
+                                <file-field field="banner" thumbnail="{{ entry.values.banner }}" multiple="false"
+                                            type="image"></file-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[9]" id="row-copyright" class="form-group has-feedback">
+                        <label for="copyright" class="col-sm-2 control-label">Copyright&nbsp;&nbsp;</label>
+                        <div class="col-sm-10 ng-admin-type-string col-sm-10 col-md-8 col-lg-7">
+                            <ma-input-field field="::field" value="entry.values.copyright"></ma-input-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[10]" id="row-certificate" class="form-group has-feedback">
+                        <label for="certificate" class="col-sm-2 control-label">Certificate&nbsp;&nbsp;</label>
+                        <div class="col-md-0 ">
+                            <div class="col-md-6">
+                                <file-field field="certificate" thumbnail="{{ entry.values.certificate }}"
+                                            multiple="false" type="file" ></file-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[11]" id="row-status" class="form-group has-feedback">
+                        <label for="status" class="col-sm-2 control-label">Status&nbsp;*&nbsp;</label>
+                        <div class="ng-admin-field-status col-sm-10 ng-admin-type-string col-sm-10 col-md-8 col-lg-7">
+                            <ma-choice-field field="::field" value="entry.values.status"></ma-choice-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-init="field=formController.fields[12]" id="row-type" class="form-group has-feedback">
+                        <label for="type" class="col-sm-2 control-label">Blend&nbsp;*&nbsp;</label>
+                        <div class="ng-admin-field-type col-sm-10 ng-admin-type-string col-sm-10 col-md-8 col-lg-7">
+                            <ma-choice-field field="::field" value="entry.values.type"></ma-choice-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </uib-tab>
+        <uib-tab index="1" heading="Images">
+            <div ng-repeat="image in entry.values.images">
+                <template-images thumbnail="{{ image.src }}"  image="image" template="entry"></template-images>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+
+
+</div>

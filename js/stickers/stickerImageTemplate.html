@@ -1,0 +1,13 @@
+<img src="{{ entry.values.src }}" ng-show="entry.values._id" width="180px">
+<div ng-controller="stickerImages">
+    <button
+            class="btn btn-default"
+            ngf-select
+            ngf-change="onStickerImageSelect($files)"
+            ngf-pattern="'image/png'"
+            accept=".png"
+            ng-hide="entry.values._id"
+    >Select Image
+    </button>
+</div>
+<p ng-hide="entry.values._id">{{ entry.values.name }}</p>

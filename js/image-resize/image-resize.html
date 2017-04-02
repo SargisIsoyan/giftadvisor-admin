@@ -1,0 +1,13 @@
+<div>
+    <br>
+    <form name="form">
+        <button class="btn btn-sm btn-default"
+                ngf-select
+                ngf-change="onFileSelect($files)"
+
+        >Select</button>
+        <p>{{image.name}}</p>
+        <br>
+        <button ng-click="uploadImage($event)">Resize</button>
+    </form>
+</div>

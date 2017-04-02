@@ -1,0 +1,78 @@
+<div class="modal-body">
+    <style>
+        #mainZoomCont {
+            position: relative;
+            background: url("js/templates/IMG_0032.PNG") no-repeat center;
+            background-size: 100% 100%;
+            width: 351px;
+            height: 624px;
+
+        }
+
+        .point {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background-color: #000000;
+        }
+
+        #mainZoomCont .point11 {
+            left: 237px;
+            top: 395px;
+        }
+
+        #mainZoomCont .point36 {
+            left: 105px;
+            top: 265px;
+        }
+
+        #mainZoomCont .point45 {
+            left: 238px;
+            top: 266px;
+        }
+
+        #mainZoomCont .point5 {
+            left: 100px;
+            top: 395px;
+        }
+
+        .resizeDiv {
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        #mainZoomCont .resizeDiv {
+            display: inline-block;
+            z-index: 20;
+        }
+
+        .modal-body {
+            padding: 0 !important;
+        }
+
+        .resizeDiv {
+            border: 1px solid red;
+        }
+
+        .calculations {
+            display: none !important;
+        }
+    </style>
+    <div id="mainZoomCont">
+        <div class="point point36" id="mainpoint36"></div>
+        <div class="point point45" id="mainpoint45"></div>
+        <div class="point point5" id="mainpoint5"></div>
+        <div class="point point11" id="mainpoint11"></div>
+        <img class="resizeDiv" ng-src="{{ image.original_src }}"/>
+    </div>
+    <textarea class="calculations" ng-model="calculations"></textarea>
+
+</div>
+<div class="modal-footer">
+    <button ng-click="save()" class="btn btn-success">
+        Save
+    </button>
+    <button ng-click="close()" class="btn btn-primary">
+        Close
+    </button>
+</div>

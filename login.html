@@ -1,0 +1,35 @@
+<!--
+Author: W3layouts
+Author URL: https://w3layouts.com/entrar-shadow-flat-form-template/
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posters Galore Login</title>
+        <meta charset="utf-8">
+        <link href="css/login.css" rel='stylesheet' type='text/css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' type='text/css'>
+        <link rel="prefetch" href="build/main.css"/>
+</head>
+<body ng-app="adminApp">
+     <div class="main">
+        <div class="login-form" ng-controller="authController" >
+            <h1>GiftAdvisor Admin Login</h1>
+            <form name="form.login" ng-submit="login()">
+                <h4 style="color: red"> {{message}} {{details}}</h4>
+                <input type="email" class="text" id="username" ng-model="_email" required="required"   placeholder="Email" >
+                <input type="password" id="password" required="required" ng-model="_password"  placeholder="Password">
+                <div class="submit">
+                    <input type="submit" value="Log In" >
+                </div>
+            </form>
+        </div>
+        <!-- end-copyright -->
+    </div>
+     <script type="text/javascript" src="build/ng-admin.min.js" charset="utf-8"></script>
+     <script type="text/javascript" src="build/main.js" charset="utf-8"></script>
+</body>
+</html>

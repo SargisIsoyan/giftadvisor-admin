@@ -1,0 +1,47 @@
+{
+  "name": "ng-admin-demo",
+  "version": "0.0.2",
+  "description": "A ng-admin demo on e-commerce domain",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/marmelab/ng-admin-demo.git"
+  },
+  "dependencies": {
+    "angular": "1.4.12",
+    "angular-moment": "^1.0.0",
+    "angular-nvd3": "^1.0.9",
+    "file-saver": "^1.3.3",
+    "imagesloaded": "^4.1.1",
+    "iso-3166-country-codes-angular": "^1.2.1",
+    "masonry-layout": "^4.1.1",
+    "moment": "^2.15.1",
+    "ng-admin.jwt-auth": "^0.5.0",
+    "ng-masonry": "^1.0.3"
+  },
+  "devDependencies": {
+    "admin-config": "^0.4.0",
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "chance": "^0.7.6",
+    "css-loader": "^0.16.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "fakerest": "^1.1.4",
+    "html-loader": "^0.3.0",
+    "md5": "^2.0.0",
+    "moment": "^2.10.6",
+    "ng-admin": "marmelab/ng-admin#v1.0.0-alpha4",
+    "node-sass": "^3.3.2",
+    "sass-loader": "^2.0.1",
+    "sinon": "ubervu/Sinon.JS",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.12.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "François Zaninotto",
+  "license": "MIT"
+}

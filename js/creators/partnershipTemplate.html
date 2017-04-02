@@ -1,0 +1,26 @@
+<hr>
+<div class="row">
+    <div  id="row-percent" class="form-group has-feedback">
+        <label for="percent" class="col-sm-2 control-label">Percent</label>
+        <div class="col-sm-10 ng-admin-type-float col-sm-10 col-md-8 col-lg-7">
+            <input type="number" ng-attr-step="1" min="0" max="100" ng-model="partnership.percent"
+                    class="form-control" name="percent"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div id="row-start_date" class="form-group has-feedback">
+        <label for="start_date" class="col-sm-2 control-label">Start Date</label>
+        <div class="col-sm-10 ng-admin-type-float col-sm-10 col-md-8 col-lg-7">
+            <ma-date-field field="startDate" value="partnership.start_date"></ma-date-field>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div id="row-end_date" class="form-group has-feedback">
+        <label for="end_date" class="col-sm-2 control-label">End Date</label>
+        <div class="col-sm-10 ng-admin-type-float col-sm-10 col-md-8 col-lg-7">
+            <ma-date-field field="startDate" value="partnership.end_date"></ma-date-field>
+        </div>
+    </div>
+</div>
