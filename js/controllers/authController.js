@@ -12,8 +12,7 @@ export default function (adminApp) {
                 password: $scope._password
             };
             var reqConfig = {
-                headers: {
-                }
+                headers: {}
             };
             $http.post(config.baseUri + "auth/login", data, reqConfig)
                 .success(function (data, status, headers, config) {
@@ -31,19 +30,9 @@ export default function (adminApp) {
                 });
         };
         $scope.logout = function () {
-            var headers = {
-                'x-access-token': window.localStorage.getItem('access-token')
-            };
-            $http({
-                method: 'GET',
-                url: config.baseUrl + "logout",
-                headers: headers
-            }).success(function (data, status, headers, config) {
-                window.localStorage.removeItem('access-token');
-                window.location.href = "./login.html";
-            }).error(function (data, status, header, config) {
-                alert(data.message);
-            });
+            window.localStorage.removeItem('access-token');
+            window.location.href = "./login.html";
+
         };
     }]);
 }

@@ -36,7 +36,8 @@ function requestInterceptor(RestangularProvider) {
 function responseInterceptor(RestangularProvider, notification) {
     RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response) {
         if(data.status == 401){
-            logout();
+            window.localStorage.removeItem('access-token');
+            window.location.href = "./login.html";
         }
         switch (operation){
             case "getList":
