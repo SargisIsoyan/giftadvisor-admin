@@ -9,22 +9,10 @@ export default function (nga, admin) {
                 .isDetailLink(true),
             nga.field('slug'),
             nga.field('rate', 'number'),
-            nga.field('status', 'choice')
-                .choices(statusChoices)
-                .cssClasses(function (entry) { // add custom CSS classes to inputs and columns
-                    if (!entry) return;
-                    if (entry.values.status == 'active') {
-                        return 'text-center bg-success';
-                    }
-                    if (entry.values.status == 'inactive') {
-                        return 'text-center bg-danger';
-                    }
-                    return 'text-center bg-warning';
-                }),
             nga.field('date_mod').template("<span >{{entry.values.date_mod | amDateFormat:'YYYY.MM.DD HH:mm:ss'}}</span>")
         ])
         .listActions([
-            '<ma-filtered-list-button entity-name="stickers" filter="{ tags: [entry.values._id] }" size="xs" label="Related Stickers"></ma-filtered-list-button>',
+            '<ma-filtered-list-button entity-name="stickers" filter="{ tags: [entry.values._id] }" size="xs" label="Related Products"></ma-filtered-list-button>',
             'edit',
             'delete'
         ])
@@ -33,29 +21,16 @@ export default function (nga, admin) {
                 .label('')
                 .pinned(true)
                 .template('<div class="input-group"><input type="text" ng-model="value" placeholder="Search" class="form-control"></input><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span></div>'),
-            nga.field('status', 'choice')
-                .label('Status')
-                .choices(statusChoices)
         ])
         .batchActions(['delete', '<batch-approve type="active" remote="template_tags" selection="selection"></batch-approve>',])
         .sortField('name')
         .sortDir('ASC');
     tags.creationView()
-
         .fields([
             nga.field('name').validation({required: true}),
             nga.field('slug')
                 .editable(false),
-            nga.field('description', 'text'),
             nga.field('rate', 'number'),
-            nga.field('status', 'choice')
-                .choices(statusChoices).validation({
-                validator: function (value) {
-                    if (value == null) throw new Error('Invalid Status');
-                }
-            }),
-
-
         ])
         .onSubmitError(['error', 'form', 'progression', 'notification', function (error, form, progression, notification) {
             var error_message = '';
@@ -70,7 +45,6 @@ export default function (nga, admin) {
                     }
                 });
             }
-
             progression.done();
             notification.log(`Some values are invalid. ` + error_message, {addnCls: 'humane-flatty-error'});
             return false;

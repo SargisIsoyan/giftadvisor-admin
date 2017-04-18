@@ -72,9 +72,9 @@ function config(RestangularProvider ) {
 
 function errorInterceptor(RestangularProvider) {
     RestangularProvider.setErrorInterceptor(function(response, deferred, responseHandler) {
-        console.log(response);
         if(response.status == 401){
-            logout();
+            window.localStorage.removeItem('access-token');
+            window.location.href = "./login.html";
         }
         return true;
     });
