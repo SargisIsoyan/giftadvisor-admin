@@ -61,6 +61,9 @@ adminApp.config(['NgAdminConfigurationProvider', function (nga) {
     var tags = nga.entity('tags').identifier(nga.field('_id'));
     admin.addEntity(tags);
 
+    var categories = nga.entity('categories').identifier(nga.field('_id'));
+    admin.addEntity(categories);
+
     var template_tags = nga.entity('template_tags').identifier(nga.field('_id'));
     admin.addEntity(template_tags);
 
@@ -89,6 +92,7 @@ adminApp.config(['NgAdminConfigurationProvider', function (nga) {
     require('./creators/config')(nga, admin);
     require('./users/config')(nga, admin);
     require('./tags/config')(nga, admin);
+    require('./category/config')(nga, admin);
     require('./templateTags/config')(nga, admin);
     require('./actions/config')(nga, admin);
     require('./emotions/config')(nga, admin);

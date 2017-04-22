@@ -19,8 +19,9 @@ export default function (nga, admin) {
             nga.field('i', 'template')
                 .label('')
                 .template('<zoom-in-modal thumbnail="{{ entry.values.profile_picture }}" image="{{ entry.values.profile_picture }}"></zoom-in-modal>'),
-            nga.field('name')
+            nga.field('first_name')
                 .label('Name')
+                .template('{{ entry.values.first_name }} {{entry.values.last_name}}')
                 .isDetailLink(true),
             nga.field('slug')
                 .label('Slug')
@@ -47,19 +48,18 @@ export default function (nga, admin) {
         .sortField('name')
         .sortDir('ASC');
     users.editionView()
-        .title('<img src="{{ entry.values.profile_picture }}" width="50" style="vertical-align: text-bottom"/> {{ entry.values.name }}\'s details')
+        .title('<img src="{{ entry.values.profile_picture }}" width="50" style="vertical-align: text-bottom"/> {{ entry.values.first_name }} {{entry.values.last_name}}\'s details')
         .fields([
             nga.field('name'),
             nga.field('slug')
                 .editable(false),
             nga.field('email', 'email'),
-            // nga.field('status')
-            //     .editable(false),
+            nga.field('status')
+                .editable(false),
             nga.field('birth_date', 'date')
                 .map(parseDate),
             nga.field('gender', 'choice')
-                .choices(genderChoices),
-            nga.field('info', 'text'),
+                .choices(genderChoices)
         ])
         .onSubmitError(['error', 'form', 'progression', 'notification', function (error, form, progression, notification) {
             var error_message = '';

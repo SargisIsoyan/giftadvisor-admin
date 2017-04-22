@@ -12,6 +12,8 @@ export default function (nga, admin) {
             .icon('<span class="fa fa-th-list fa-fw"></span>')
             .addChild(nga.menu(admin.getEntity('tags'))
                 .icon('<span class="fa fa-tags fa-fw"></span>'))
+            .addChild(nga.menu(admin.getEntity('categories'))
+                .icon('<span class="fa fa-tags fa-fw"></span>'))
 
         )
         // .addChild(nga.menu()

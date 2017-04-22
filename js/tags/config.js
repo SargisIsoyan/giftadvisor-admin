@@ -5,7 +5,7 @@ export default function (nga, admin) {
     tags.listView()
         .title('Tags')
         .fields([
-            nga.field('name') // use last_name for sorting
+            nga.field('name.en') // use last_name for sorting
                 .isDetailLink(true),
             nga.field('slug'),
             nga.field('rate', 'number'),
@@ -27,7 +27,8 @@ export default function (nga, admin) {
         .sortDir('ASC');
     tags.creationView()
         .fields([
-            nga.field('name').validation({required: true}),
+            nga.field('name.en').validation({required: true}),
+            nga.field('name.hy').validation({required: true}),
             nga.field('slug')
                 .editable(false),
             nga.field('rate', 'number'),
@@ -51,7 +52,7 @@ export default function (nga, admin) {
         }]);
     
     tags.editionView()
-        .title('{{ entry.values.name }}\'s details')
+        .title('{{ entry.values.name.en }}\'s details')
         .fields([tags.creationView().fields(),
             nga.field('date_at','datetime').editable(false),
             nga.field('date_mod','datetime').editable(false),
