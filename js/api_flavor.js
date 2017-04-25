@@ -65,7 +65,6 @@ function responseInterceptor(RestangularProvider, notification) {
 
 function config(RestangularProvider ) {
     RestangularProvider.setDefaultHeaders({
-        'x-key': globalConfig.api_key,
         'x-access-token': window.localStorage.getItem('access-token')
     });
 }

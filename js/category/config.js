@@ -31,6 +31,14 @@ export default function (nga, admin) {
             nga.field('name.hy').validation({required: true}),
             nga.field('slug')
                 .editable(false),
+            nga.field('parent', 'reference')
+                .label('Parent')
+                .targetEntity(admin.getEntity('categories'))
+                .targetField(nga.field('slug'))
+                .remoteComplete(true, {
+                    refreshDelay: 300,
+                    searchQuery: function(search) { return { q: search }; }
+                }),
             nga.field('rate', 'number'),
         ])
         .onSubmitError(['error', 'form', 'progression', 'notification', function (error, form, progression, notification) {

@@ -3,14 +3,14 @@
 install:
 	@npm install
 
-build: copy-ng-admin
+build: giftadvisor-admin
 	@./node_modules/.bin/webpack  --progress --colors --devtool source-map
 
-copy-ng-admin:
+giftadvisor-admin:
 	@cp ./node_modules/ng-admin/build/ng-admin.min.js build/
 	@cp ./node_modules/ng-admin/build/ng-admin.min.js.map build/
 
-run: copy-ng-admin
+run: giftadvisor-admin
 	@echo "**************************************************"
 	@echo "* open http://localhost:8080/webpack-dev-server/ *"
 	@echo "**************************************************"
