@@ -57,7 +57,7 @@ export default function (nga, admin) {
                 })
         ])
         .listActions([
-            '<ma-filtered-list-button entity-name="stickers" filter="{ owner: entry.values._id }" size="xs" label="Creator Stickers"></ma-filtered-list-button>',
+            '<ma-filtered-list-button entity-name="products" filter="{ owner: entry.values._id }" size="xs" label="Creator Stickers"></ma-filtered-list-button>',
             '<activate-creator size="xs" review="entry" id="{{entry.values._id}}"></activate-creator>',
             'edit'
         ])

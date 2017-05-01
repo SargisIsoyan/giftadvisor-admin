@@ -5,14 +5,14 @@ export default function (nga, admin) {
     tags.listView()
         .title('Categories')
         .fields([
-            nga.field('name.en') // use last_name for sorting
+            nga.field('name') // use last_name for sorting
                 .isDetailLink(true),
             nga.field('slug'),
             nga.field('rate', 'number'),
             nga.field('date_mod').template("<span >{{entry.values.date_mod | amDateFormat:'YYYY.MM.DD HH:mm:ss'}}</span>")
         ])
         .listActions([
-            '<ma-filtered-list-button entity-name="stickers" filter="{ category: [entry.values._id] }" size="xs" label="Related Products"></ma-filtered-list-button>',
+            '<ma-filtered-list-button entity-name="products" filter="{ category: [entry.values._id] }" size="xs" label="Related Products"></ma-filtered-list-button>',
             'edit',
             'delete'
         ])
@@ -34,7 +34,7 @@ export default function (nga, admin) {
             nga.field('parent', 'reference')
                 .label('Parent')
                 .targetEntity(admin.getEntity('categories'))
-                .targetField(nga.field('slug'))
+                .targetField(nga.field('name'))
                 .remoteComplete(true, {
                     refreshDelay: 300,
                     searchQuery: function(search) { return { q: search }; }
@@ -60,7 +60,7 @@ export default function (nga, admin) {
         }]);
     
     tags.editionView()
-        .title('{{ entry.values.name.en }}\'s details')
+        .title('{{ entry.values.name }}\'s details')
         .fields([tags.creationView().fields(),
             nga.field('date_at','datetime').editable(false),
             nga.field('date_mod','datetime').editable(false),

@@ -12,7 +12,7 @@ export default function (nga, admin) {
             nga.field('date_mod').template("<span >{{entry.values.date_mod | amDateFormat:'YYYY.MM.DD HH:mm:ss'}}</span>")
         ])
         .listActions([
-            '<ma-filtered-list-button entity-name="stickers" filter="{ tags: [entry.values._id] }" size="xs" label="Related Products"></ma-filtered-list-button>',
+            '<ma-filtered-list-button entity-name="products" filter="{ tags: [entry.values._id] }" size="xs" label="Related Products"></ma-filtered-list-button>',
             'edit',
             'delete'
         ])

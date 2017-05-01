@@ -14,11 +14,10 @@ export default function (nga, admin) {
                 .icon('<span class="fa fa-tags fa-fw"></span>'))
             .addChild(nga.menu(admin.getEntity('categories'))
                 .icon('<span class="fa fa-tags fa-fw"></span>'))
+            .addChild(nga.menu(admin.getEntity('products'))
+                .icon('<span class="fa fa-picture-o fa-fw"></span>'))
 
         )
-        // .addChild(nga.menu()
-        //         .title('Statistics')
-        //         .icon('<span class="fa fa-line-chart fa-fw"></span>')
         //     .addChild(nga.menu()
         //         .title('Stickers')
         //         .link('/statistics/sticker')

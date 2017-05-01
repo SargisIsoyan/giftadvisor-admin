@@ -6,7 +6,7 @@ var config = require('./../../config');
 export default function (adminApp) {
     adminApp.controller('customformController', ['$scope', '$state', 'Restangular', 'notification', 'progression',
         function ($scope, $state, Restangular, notification, progression) {
-            var requiredFields = ['name', 'description', 'owner', 'tags', 'price', 'pg', 'main_iamge', 'images_zip', 'banner'];
+            var requiredFields = ['name.hy', 'name.en', 'category', 'tags', 'price', 'main_iamge', 'images_zip'];
             var requiredEditionFields = ['name', 'description', 'owner', 'tags', 'price', 'pg'];
             $scope.submitCreation = function ($event) {
                 $event.preventDefault();

@@ -25,10 +25,9 @@ adminApp.config(['NgAdminConfigurationProvider', 'FieldViewConfigurationProvider
 }]);
 
 // custom directives
-adminApp.directive('approveSticker', require('./stickers/approveSticker'));
+adminApp.directive('approveSticker', require('./products/approveSticker'));
 adminApp.directive('batchApprove', require('./directives/batchApprove'));
-adminApp.directive('fileField', require('./stickers/fileField'));
-adminApp.directive('activateCreator', require('./creators/activateCreator'));
+adminApp.directive('fileField', require('./products/fileField'));
 adminApp.directive('templateImages', require('./templates/templateImages'));
 //adminApp.directive('dashboardSummary', require('./dashboard/dashboardSummary'));
 adminApp.directive('zoomInSticker', require('./directives/zoomInSticker'));
@@ -51,10 +50,6 @@ adminApp.config(['NgAdminConfigurationProvider', function (nga) {
     var admin = nga.application('My First Admin')
         .baseApiUrl(config.baseUrl);
 
-    // add entities
-    var creators = nga.entity('creators').identifier(nga.field('_id'));
-    admin.addEntity(creators);
-
     var users = nga.entity('users').identifier(nga.field('_id'));
     admin.addEntity(users);
 
@@ -64,43 +59,15 @@ adminApp.config(['NgAdminConfigurationProvider', function (nga) {
     var categories = nga.entity('categories').identifier(nga.field('_id'));
     admin.addEntity(categories);
 
-    var template_tags = nga.entity('template_tags').identifier(nga.field('_id'));
-    admin.addEntity(template_tags);
 
-    var gifs = nga.entity('gifs').identifier(nga.field('_id'));
-    admin.addEntity(gifs);
-
-    var gifTags = nga.entity('gif-tags').identifier(nga.field('_id'));
-    admin.addEntity(gifTags);
-
-    var gifCategories = nga.entity('gif-categories').identifier(nga.field('_id'));
-    admin.addEntity(gifCategories);
-
-    var actions = nga.entity('actions').identifier(nga.field('_id'));
-    admin.addEntity(actions);
-
-    var emotions = nga.entity('emotions').identifier(nga.field('_id'));
-    admin.addEntity(emotions);
-
-    var stickers = nga.entity('stickers').identifier(nga.field('_id'));
-    admin.addEntity(stickers);
-
-    var templates = nga.entity('templates').identifier(nga.field('_id'));
-    admin.addEntity(templates);
+    var products = nga.entity('products').identifier(nga.field('_id'));
+    admin.addEntity(products);
 
     // configure entities
-    require('./creators/config')(nga, admin);
     require('./users/config')(nga, admin);
     require('./tags/config')(nga, admin);
     require('./category/config')(nga, admin);
-    require('./templateTags/config')(nga, admin);
-    require('./actions/config')(nga, admin);
-    require('./emotions/config')(nga, admin);
-    require('./stickers/config')(nga, admin);
-    require('./templates/config')(nga, admin);
-    require('./gifs/tags/config')(nga, admin);
-    require('./gifs/categories/config')(nga, admin);
-    require('./gifs/config')(nga, admin);
+    require('./products/config')(nga, admin);
 
     admin.dashboard(require('./dashboard/config')(nga, admin));
     admin.header(require('./header.html'));

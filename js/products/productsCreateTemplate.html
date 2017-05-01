@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <ma-view-actions entry="entry" entity="::formController.entity">
+                <ma-list-button entity="::entity"></ma-list-button>
+            </ma-view-actions>
+            <h2>Create new product</h2>
+        </div>
+    </div>
+</div>
+<div class="row ng-admin-entity-stickers" id="create-view" ng-controller="customformController">
+    <form class="col-lg-12 form-horizontal "
+          name="formController.form"
+          ng-submit="submitCreation($event)">
+        <div class="row">
+            <div ng-init="field=formController.fields[0]" id="row-name-en" class="form-group has-feedback"
+                 ng-class="formController.form['name.en'].$dirty ? (formController.form['name.en'].$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-name-en" class="col-sm-2 control-label">Name&nbsp;En*&nbsp;</label>
+                <div class="col-sm-10 col-md-8 col-lg-7">
+                    <ma-input-field field="::field" value="entry.values['name.en']"></ma-input-field>
+                    <span ng-show="formController.form['name.en'].$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form['name.en'].$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[1]" id="row-name-hy" class="form-group has-feedback"
+                 ng-class="formController.form['name.hy'].$dirty ? (formController.form['name.hy'].$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-name-hy" class="col-sm-2 control-label">Name Hy*&nbsp;</label>
+                <div class="col-sm-10 col-md-8 col-lg-7">
+                    <ma-input-field field="::field" value="entry.values['name.hy']"></ma-input-field>
+                    <span ng-show="formController.form['name.hy'].$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form['name.hy'].$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[2]" id="row-description-en" class="form-group has-feedback"
+                 ng-class="formController.form['description.en'].$dirty ? (formController.form['description.en'].$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-description-en" class="col-sm-2 control-label">Description En</label>
+                <div class="col-sm-10 col-md-8 col-lg-7">
+                    <ma-text-field field="::field" value="entry.values['description.en']"></ma-text-field>
+                    <span ng-show="formController.form['description.en'].$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form['description.en'].$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[3]" id="row-description-hy" class="form-group has-feedback"
+                 ng-class="formController.form['description.hy'].$dirty ? (formController.form['description.hy'].$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-description-hy" class="col-sm-2 control-label">Description Hy</label>
+                <div class="col-sm-10 col-md-8 col-lg-7">
+                    <ma-text-field field="::field" value="entry.values['description.hy']"></ma-text-field>
+                    <span ng-show="formController.form['description.hy'].$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form['description.hy'].$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div ng-init="field=formController.fields[4]" id="row-category" class="form-group has-feedback"
+                 ng-class="formController.form.category.$dirty ? (formController.form.category.$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-category" class="col-sm-2 control-label">Category&nbsp;*&nbsp;</label>
+                <div class="ng-admin-field-category ng-admin-type-reference col-sm-10 col-sm-10 col-md-8 col-lg-7">
+                    <ma-reference-field field="::field" value="entry.values.category"
+                                        datastore="::formController.dataStore"></ma-reference-field>
+                    <span ng-show="formController.form.category.$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form.category.$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[5]" id="row-tags" class="form-group has-feedback"
+                 ng-class="formController.form.tags.$dirty ? (formController.form.tags.$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-tags" class="col-sm-2 control-label">Tags&nbsp;*&nbsp;</label>
+                <div class="ng-admin-field-tags ng-admin-type-reference col-sm-10 col-sm-10 col-md-8 col-lg-7">
+                    <ma-ref-many-field-tags field="::field" value="entry.values.tags"
+                                             datastore="::formController.dataStore"></ma-ref-many-field-tags>
+                    <span ng-show="formController.form.tags.$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form.tags.$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[6]" id="row-price" class="form-group has-feedback"
+                 ng-class="formController.form.price.$dirty ? (formController.form.price.$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-price" class="col-sm-2 control-label">Price&nbsp;*&nbsp;</label>
+                <div class="col-sm-10 ng-admin-type-float col-sm-10 col-md-8 col-lg-7">
+                    <ma-input-field field="::field" type="number" step="any"
+                                    value="entry.values.price"></ma-input-field>
+                    <span ng-show="formController.form.price.$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form.price.$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[7]" id="row-old-price" class="form-group has-feedback"
+                 ng-class="formController.form.old_price.$dirty ? (formController.form.old_price.$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-old-price" class="col-sm-2 control-label">Old Price&nbsp;</label>
+                <div class="col-sm-10 ng-admin-type-number col-sm-10 col-md-8 col-lg-7">
+                    <ma-input-field field="::field" type="number" step="1"
+                                    value="entry.values.old_price"></ma-input-field>
+                    <span ng-show="formController.form.old_price.$dirty" class="glyphicon form-control-feedback"
+                          ng-class="formController.form.old_price.$valid ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[8]" id="row-main_image" class="form-group has-feedback"
+                 ng-class="formController.form.main_image.$dirty ? (formController.form.main_image.$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-main_image" class="col-sm-2 control-label">Main Image&nbsp;*&nbsp;</label>
+                <div class="col-md-0 ">
+                    <div class="col-md-1">
+                        <button
+                                class="btn btn-default"
+                                ngf-select
+                                ngf-change="onFileSelect($files,'main_image')"
+                                accept="*"
+                        >Upload
+                        </button>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{ entry.values.main_image.name }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-init="field=formController.fields[9]" id="row-images_zip" class="form-group has-feedback"
+                 ng-class="formController.form.images_zip.$dirty ? (formController.form.images_zip.$valid ? 'has-success' : 'has-error') : ''">
+                <label for="row-images_zip" class="col-sm-2 control-label">Images Zip&nbsp;*&nbsp;</label>
+                <div class="col-md-0">
+                    <div class="col-md-1">
+                        <button
+                                class="btn btn-default"
+                                ngf-select
+                                ngf-change="onFileSelect($files,'images_zip')"
+                                ngf-pattern="'.zip'"
+                                accept=".zip"
+                        >Upload
+                        </button>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{ entry.values.images_zip.name }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
