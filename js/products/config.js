@@ -81,8 +81,7 @@ export default function (nga, admin) {
                 .validation({required: true}),
             nga.field('price', 'float')
                 .validation({required: true}),
-            nga.field('old_price', 'float')
-                .validation({required: true}),
+            nga.field('old_price', 'float'),
             nga.field('main_image', 'file')
                 .validation({required: true}),
             nga.field('images_zip', 'file')
