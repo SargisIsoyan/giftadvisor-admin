@@ -58,7 +58,7 @@ export default function (nga, admin) {
             nga.field('tags', 'reference_many')
                 .label('Tags')
                 .targetEntity(admin.getEntity('tags'))
-                .targetField(nga.field('name'))
+                .targetField(nga.field('name.en'))
                 .validation({required: true})
                 .remoteComplete(true, {
                     searchQuery: function (search) {
@@ -95,7 +95,7 @@ export default function (nga, admin) {
             nga.field('tags', 'reference_many')
                 .label('Tags')
                 .targetEntity(admin.getEntity('tags'))
-                .targetField(nga.field('name'))
+                .targetField(nga.field('name.en'))
                 .validation({required: true})
                 .remoteComplete(true, {
                     searchQuery: function (search) {
@@ -161,6 +161,5 @@ export default function (nga, admin) {
             'list',
             'delete'
         ]);
-    products.deletionView()
     return products;
 }

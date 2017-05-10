@@ -5,7 +5,7 @@ export default function (nga, admin) {
     tags.listView()
         .title('Categories')
         .fields([
-            nga.field('name') // use last_name for sorting
+            nga.field('name')
                 .isDetailLink(true),
             nga.field('slug'),
             nga.field('rate', 'number'),
@@ -60,7 +60,7 @@ export default function (nga, admin) {
         }]);
     
     tags.editionView()
-        .title('{{ entry.values.name }}\'s details')
+        .title('{{ entry.values[\'name.en\'] }}\'s details')
         .fields([tags.creationView().fields(),
             nga.field('date_at','datetime').editable(false),
             nga.field('date_mod','datetime').editable(false),

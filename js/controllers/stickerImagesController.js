@@ -14,22 +14,15 @@ export default function (adminApp) {
                 progression.start();
                 var formData = new FormData();
                 var images = $scope.entry.values.images;
-                debugger;
                 try {
                     images.forEach((image) => {
-                        if (image.action == null || image.emotion == null) {
-                            notification.log('Fill action or emotion', {addnCls: 'humane-flatty-error'});
-                            progression.done();
-                            throw BreakException;
-                        }
                         if (image._id == undefined || image._id == null) {
                             if (typeof image.src == "string" && $root.stickerImageFiles[image.src]) {
                                 formData.append('image-'+image.src,$root.stickerImageFiles[image.src]);
                             }
-
                         }
                     });
-                    formData.append('sticker_id', $scope.entry.identifierValue);
+                    formData.append('product_id', $scope.entry.identifierValue);
                     formData.append('images',angular.toJson(images));
 
                     Restangular

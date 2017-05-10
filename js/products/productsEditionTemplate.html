@@ -6,7 +6,7 @@
                 <ma-list-button entity="::entity"></ma-list-button>
                 <ma-delete-button entry="entry" entity="::entity"></ma-delete-button>
             </ma-view-actions>
-            <h1>Sticker {{entry.values.name}}</h1>
+            <h1>Edit product "{{entry.values['name.en']}}"</h1>
         </div>
     </div>
 </div>
@@ -116,7 +116,7 @@
                         <label for="row-main_image" class="col-sm-2 control-label">Main Image&nbsp;*&nbsp;</label>
                         <div class="col-md-0 ">
                             <div class="col-md-6">
-                                <file-field field="main_image" thumbnail="{{ entry.values['main_image.src' ] }}"
+                                <file-field field="main_image" thumbnail="{{ entry.values['main_image.src' ] }}" imagename="{{ entry.values['main_image.name'] }}"
                                             multiple="false" type="image"></file-field>
                             </div>
                         </div>

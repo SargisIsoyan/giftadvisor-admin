@@ -52,7 +52,7 @@ export default function (nga, admin) {
         }]);
     
     tags.editionView()
-        .title('{{ entry.values.name.en }}\'s details')
+        .title('{{ entry.values[\'name.en\']}}\'s details')
         .fields([tags.creationView().fields(),
             nga.field('date_at','datetime').editable(false),
             nga.field('date_mod','datetime').editable(false),

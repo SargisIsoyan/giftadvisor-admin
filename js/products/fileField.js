@@ -4,8 +4,9 @@ function fileField(Restangular, $state, notification) {
         restrict: 'E',
         scope: {
             field: "&",
-            thumbnail:"@",
-            multiple:"@",
+            thumbnail: "@",
+            imagename: "@",
+            multiple: "@",
             size: "@",
         },
         link: function (scope, element, attrs) {
@@ -25,8 +26,8 @@ function fileField(Restangular, $state, notification) {
                         .customPOST(formData, undefined, undefined,
                             {'Content-Type': undefined})
                         .then((response) => {
-                             scope.thumbnail = response.data[scope.fieldName] ;
-                                scope.popoxakan = false;
+                            scope.thumbnail = response.data[scope.fieldName]['src'];
+                            scope.popoxakan = false;
                         })
                         .then(() => notification.log('Upload Complete ', {addnCls: 'humane-flatty-success'}))
                         .catch(e => {
@@ -48,7 +49,7 @@ function fileField(Restangular, $state, notification) {
 >Upload</button>
 </div>
   <div class="col-md-8">
-<p ng-show="!popoxakan">{{thumbnail.substring(thumbnail.lastIndexOf('/')+1)}}</p>
+<p ng-show="!popoxakan">{{imagename }}</p>
 <img src="images/loading.gif" width="40px" ng-show="popoxakan"/>
   </div>
   <div class="col-md-2" ng-if="type=='image'">

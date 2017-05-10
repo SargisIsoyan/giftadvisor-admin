@@ -67,7 +67,7 @@ export default function (adminApp) {
                 progression.start();
                 var formData = new FormData();
                 var Ok = true;
-                var fields = ["name", "description", "owner", "tags", "price", "pg", "copyright", "status", "animated", "visibility", "type"];
+                var fields = ["name.en","name.hy", "description.en","description.hy", "category", "tags", "price", "old_price"];
                 Object.keys(fields).forEach((key) => {
                     var item = $scope.entry.values[fields[key]];
                     if ((item == null || typeof item == "undefined") && requiredEditionFields.indexOf(fields[key]) > -1) {
