@@ -15,22 +15,10 @@ export default function (nga, admin) {
         .fields([
             nga.field('i', 'template')
                 .label('')
-                .template('<zoom-in-modal thumbnail="{{ entry.values.main_image }}" image="{{ entry.values.main_image }}"></zoom-in-modal>'),
+                .template('<zoom-in-modal thumbnail="{{ entry.values[\'main_image.src\'] }}" image="{{ entry.values[\'main_image.original_src\'] }}"></zoom-in-modal>'),
             nga.field('name').isDetailLink(true),
             nga.field('price', 'amount')
                 .cssClasses('hidden-xs'),
-            nga.field('status', 'choice')
-                .choices(statusChoices)
-                .cssClasses(function (entry) { // add custom CSS classes to inputs and columns
-                    if (!entry) return;
-                    if (entry.values.status == 'approved') {
-                        return 'text-center bg-success';
-                    }
-                    if (entry.values.status == 'rejected') {
-                        return 'text-center bg-danger';
-                    }
-                    return 'text-center bg-warning';
-                }),
             nga.field('date_mod').template("<span >{{entry.values.date_mod | amDateFormat:'YYYY.MM.DD HH:mm:ss'}}</span>")
         ])
         .batchActions([
@@ -47,8 +35,7 @@ export default function (nga, admin) {
         ])
         .listActions([
             'edit',
-            'delete',
-            '<approve-product size="xs" type="product" review="entry" id="{{entry.values._id}}"></approve-product>',
+            'delete'
         ]);
     products.creationView()
         .template(productsCreateTemplate)
@@ -90,9 +77,21 @@ export default function (nga, admin) {
     products.editionView()
         .title('Edit product "{{entry.values.name}}"')
         .fields([
-            nga.field('name')
+            nga.field('name.en')
                 .validation({required: true}),
-            nga.field('description', 'text'),
+            nga.field('name.hy')
+                .validation({required: true}),
+            nga.field('description.en', 'text'),
+            nga.field('description.hy', 'text'),
+            nga.field('category', 'reference')
+                .label('Category')
+                .targetEntity(admin.getEntity('categories'))
+                .targetField(nga.field('name'))
+                .remoteComplete(true, {
+                    searchQuery: function (search) {
+                        return {q: search};
+                    }
+                }).validation({required: true}),
             nga.field('tags', 'reference_many')
                 .label('Tags')
                 .targetEntity(admin.getEntity('tags'))
@@ -106,21 +105,18 @@ export default function (nga, admin) {
                 .validation({required: true}),
             nga.field('price', 'float')
                 .validation({required: true}),
-            nga.field('main_iamge', 'template')
-                .template('<file-field field="main_image" thumbnail="{{ entry.values.main_image }}" multiple="false" type="image"></file-field>'),
-            nga.field('status', 'choice')
-                .choices(statusChoices),
-            nga.field('slug'),
+            nga.field('old_price', 'float')
+                .validation({required: true}),
+            nga.field('main_image', 'file')
+                .validation({required: true}),
             nga.field('images', 'embedded_list')
                 .label('Images')
                 .targetFields([
                     nga.field('src', 'file')
                         .label('')
-                        .cssClasses('product-image')
+                        .cssClasses('sticker-image')
                         .template(productsImageTemplate),
-                ]),
-            nga.field('date_at', 'datetime'),
-            nga.field('date_mod', 'datetime'),
+                ])
         ])
         .prepare(['Restangular', 'datastore', 'view', 'entry', function (Restangular, datastore, view, entry) {
             var refFields = view.getField('images').targetFields().filter(field => {
