@@ -70,24 +70,7 @@ export default function maEmbeddedListField() {
             <div class="form-field form-group" ng-init="field = fields[0]">
                 <ma-field field="::field" value="entry.values.src" entry="entry" entity="::targetEntity" form="formName"  datastore="::datastore()"></ma-field>
             </div>
-            <div class="form-field form-group" ng-init="field = fields[1]">
-                <label for="actions" class="col-sm-2 control-label">Actions&nbsp;*&nbsp;</label>
-                <div class="col-sm-10 col-md-8 col-lg-7">
-                    <ref-field field="::field" value="entry.values.action" datastore="datastore()" foo="i"></ref-field>
-                </div>
-            </div>
-            <div class="form-field form-group" ng-init="field = fields[2]">
-                <label for="emotions" class="col-sm-2 control-label">Emotions&nbsp;*&nbsp;</label>
-                <div class="col-sm-10 col-md-8 col-lg-7">
-                    <ref-field field="::field" value="entry.values.emotion" datastore="datastore()" foo="i"></ref-field>
-                </div>
-            </div>
-            <div class="form-field form-group" ng-init="field = fields[3]">
-                <label for="actions" class="col-sm-2 control-label">Tags</label>
-                <div class="col-sm-10 col-md-8 col-lg-7">
-                    <ref-many-field field="::field" value="entry.values.tags" datastore="datastore()" foo="i"></ref-many-field>
-                </div>
-            </div>
+            
         <hr/>
     </ng-form>
     <div class="form-group">

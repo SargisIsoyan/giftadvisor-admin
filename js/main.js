@@ -32,7 +32,7 @@ adminApp.directive('templateImages', require('./templates/templateImages'));
 //adminApp.directive('dashboardSummary', require('./dashboard/dashboardSummary'));
 adminApp.directive('zoomInSticker', require('./directives/zoomInSticker'));
 adminApp.directive('zoomInModal', require('./directives/zoomInModal'));
-adminApp.directive('stickerImage', require('./directives/stickerImage'));
+adminApp.directive('productImage', require('./directives/productImage'));
 adminApp.directive('refField', require('./directives/refField'));
 adminApp.directive('refManyField', require('./directives/refManyField'));
 adminApp.directive('maChoicesFieldTags', require('./directives/maChoicesFieldTags'));
