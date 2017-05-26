@@ -52,7 +52,7 @@ export default function maEmbeddedListField() {
                    scope.entries = scope.entries.filter(e => e !==  entry);
                 };
                 scope.$watch('entries', (newEntries, oldEntries) => {
-                    if (newEntries === oldEntries) {
+                    if (newEntries === oldEntries){
                         return ;
                     }
                     scope.i++;
@@ -70,7 +70,12 @@ export default function maEmbeddedListField() {
             <div class="form-field form-group" ng-init="field = fields[0]">
                 <ma-field field="::field" value="entry.values.src" entry="entry" entity="::targetEntity" form="formName"  datastore="::datastore()"></ma-field>
             </div>
-            
+            <div class="form-field form-group" ng-init="field = fields[1]">
+                <label for="actions" class="col-sm-2 control-label">Color</label>
+                <div class="col-sm-10 col-md-8 col-lg-7">
+                    <ma-color-picker field="::field" value="entry.values.color" entry="entry" entity="::targetEntity" form="formName"  datastore="::datastore()"></ma-color-picker>
+                </div>
+            </div>
         <hr/>
     </ng-form>
     <div class="form-group">

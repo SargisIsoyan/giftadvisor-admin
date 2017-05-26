@@ -14,6 +14,7 @@ export default function (adminApp) {
                 progression.start();
                 var formData = new FormData();
                 var images = $scope.entry.values.images;
+                console.log(images);
                 try {
                     images.forEach((image) => {
                         if (image._id == undefined || image._id == null) {

@@ -1,4 +1,6 @@
 /**
+ * Created by sargis.isoyan on 16/05/2017.
+ *
  * Edition field for a selection of elements in a list - a multiple select.
  *
  * @example <ma-choices-field entry="entry" field="field" value="value"></ma-choices-field>
@@ -18,6 +20,7 @@ export default function maChoicesFieldTags($compile) {
         compile: function () {
             return {
                 pre: function (scope, element) {
+                    console.log(scope.value);
                     var field = scope.field();
                     var attributes = field.attributes();
                     scope.placeholder = (attributes && attributes.placeholder) || 'FILTER_VALUES';
@@ -31,23 +34,23 @@ export default function maChoicesFieldTags($compile) {
                         refreshAttributes = 'refresh-delay="refreshDelay" refresh="refresh({ $search: $select.search })"';
                         //itemsFilter = '';
                     }
-                    var choices = field.choices ? field.choices() : [];
+                    var choices = scope.value ? scope.value.map(choice => ({label: choice, value: choice})) : [];
                     scope.newTagChoise = null;
                     scope.onRemove = function () {
                         scope.refresh({$search: this.$select.search})
                     };
-                    // scope.newTag = function (name) {
-                    //     scope.newTagChoise = {
-                    //         label: name,
-                    //         value: name
-                    //     };
-                    //     return scope.newTagChoise;
-                    // };
+                    scope.newTag = function (name) {
+                        scope.newTagChoise = {
+                            label: name,
+                            value: name
+                        };
+                        return scope.newTagChoise;
+                    };
                     var template = `
-                        <ui-select  ${scope.v.required ? 'ui-select-required' : ''} multiple on-remove="onRemove()" ng-model="$parent.value"  ng-required="v.required" id="{{ name }}" name="{{ name }}">
+                        <ui-select  ${scope.v.required ? 'ui-select-required' : ''} multiple on-remove="onRemove()" tagging="newTag" ng-model="$parent.value" tagging-label="new" ng-required="v.required" id="{{ name }}" name="{{ name }}">
                             <ui-select-match placeholder="{{ placeholder | translate }}">{{ $item.label | translate }}</ui-select-match>
                             <ui-select-choices ${refreshAttributes} repeat="item.value as item in choices ${itemsFilter}">                            
-                                {{ item.label | translate }}<span ng-if="item.isTag" ng-bind-html="' (new)'"></span>
+                                {{ item.label | translate }}
                             </ui-select-choices>
                         </ui-select>`;
 

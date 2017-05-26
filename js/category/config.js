@@ -1,6 +1,6 @@
 export default function (nga, admin) {
-    const statuses = ['active', 'inactive'];
-    const statusChoices = statuses.map(status => ({label: status, value: status}));
+    const fieldTypes = ['list', 'string'];
+    const fieldChoices = fieldTypes.map(status => ({label: status, value: status}));
     var tags = admin.getEntity('categories');
     tags.listView()
         .title('Categories')
@@ -39,7 +39,7 @@ export default function (nga, admin) {
                     refreshDelay: 300,
                     searchQuery: function(search) { return { q: search }; }
                 }),
-            nga.field('rate', 'number'),
+            nga.field('rate', 'number')
         ])
         .onSubmitError(['error', 'form', 'progression', 'notification', function (error, form, progression, notification) {
             var error_message = '';

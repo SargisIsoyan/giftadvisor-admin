@@ -72,7 +72,23 @@ export default function (nga, admin) {
             nga.field('main_image', 'file')
                 .validation({required: true}),
             nga.field('images_zip', 'file')
-                .validation({required: true})
+                .validation({required: true}),
+            nga.field('additional_fields', 'embedded_list')
+                .label('Additional Fields')
+                .targetFields([
+                    nga.field('type', 'choice')
+                        .label('Type')
+                        .choices([{label: 'Info field', value: 'info'},{label: 'Selectable', value: 'selectable'}])
+                        .validation({required: true}),
+                    nga.field('name.en').label('Name En').validation({required: true}),
+                    nga.field('value.en', 'choices').label('Value En')
+                        .template('<ma-choices-field-new entry="entry" field="field" value="value"></ma-choices-field-new>')
+                        .validation({required: true}),
+                    nga.field('name.hy').label('Name Hy').validation({required: true}),
+                    nga.field('value.hy','choices').label('Value Hy')
+                        .template('<ma-choices-field-new entry="entry" field="field"  value="value"></ma-choices-field-new>')
+                        .validation({required: true}),
+                ])
         ]);
     products.editionView()
         .title('Edit product "{{entry.values.name}}"')
@@ -116,6 +132,24 @@ export default function (nga, admin) {
                         .label('')
                         .cssClasses('sticker-image')
                         .template(productsImageTemplate),
+                    nga.field('color')
+                        .label('Color')
+                ]),
+            nga.field('additional_fields', 'embedded_list')
+                .label('Additional Fields')
+                .targetFields([
+                    nga.field('type', 'choice')
+                        .label('Type')
+                        .choices([{label: 'Info field', value: 'info'},{label: 'Selectable', value: 'selectable'}])
+                        .validation({required: true}),
+                    nga.field('name.en').label('Name En').validation({required: true}),
+                    nga.field('value.en', 'choices').label('Value En')
+                        .template('<ma-choices-field-new entry="entry" field="field" value="value"></ma-choices-field-new>')
+                        .validation({required: true}),
+                    nga.field('name.hy').label('Name Hy').validation({required: true}),
+                    nga.field('value.hy','choices').label('Value Hy')
+                        .template('<ma-choices-field-new entry="entry" field="field"  value="value"></ma-choices-field-new>')
+                        .validation({required: true}),
                 ])
         ])
         .prepare(['Restangular', 'datastore', 'view', 'entry', function (Restangular, datastore, view, entry) {

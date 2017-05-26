@@ -21,9 +21,10 @@ export default function (adminApp) {
                         Ok = false;
                         return;
                     } else if (item != null) {
-                        formData.append(key, item);
+                        formData.append(key, (typeof item == "object" && key == 'additional_fields') ? angular.toJson(item) : item);
                     }
                 });
+
                 if (Ok) {
                     Restangular
                         .all($scope.entry.entityName)
@@ -67,16 +68,16 @@ export default function (adminApp) {
                 progression.start();
                 var formData = new FormData();
                 var Ok = true;
-                var fields = ["name.en","name.hy", "description.en","description.hy", "category", "tags", "price", "old_price"];
+                var fields = ["name.en", "name.hy", "description.en", "description.hy", "category", "tags", "price", "old_price", 'additional_fields'];
                 Object.keys(fields).forEach((key) => {
                     var item = $scope.entry.values[fields[key]];
-                    if ((item == null || typeof item == "undefined") && requiredEditionFields.indexOf(fields[key]) > -1) {
+                    if ((item == null || typeof item == "undefined") && requiredEditionFields.indexOf(fields[key]) > -1 && fields[key] != 'old_price') {
                         notification.log(`Fill ` + fields[key], {addnCls: 'humane-flatty-error'});
                         progression.done();
                         Ok = false;
                         return;
                     } else if (typeof item != "undefined" && item != null) {
-                        formData.append(fields[key], (typeof item == "object") ? angular.toJson(item) : item);
+                        formData.append(fields[key], (typeof item == "object" && fields[key] == 'additional_fields') ? angular.toJson(item) : item);
                     }
                 });
                 if (Ok) {
