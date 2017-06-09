@@ -29,6 +29,8 @@ export default function (nga, admin) {
         .fields([
             nga.field('name.en').validation({required: true}),
             nga.field('name.hy').validation({required: true}),
+            nga.field('description.en','wysiwyg').validation({required: true}),
+            nga.field('description.hy','wysiwyg').validation({required: true}),
             nga.field('slug')
                 .editable(false),
             nga.field('parent', 'reference')
